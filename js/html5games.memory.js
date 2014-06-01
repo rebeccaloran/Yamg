@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of c845db8... going to revert
 
 $(function() {
 =======
@@ -37,6 +40,7 @@ $(function() {
         
         });
         memory.grid.appendChild(memory.frag);
+<<<<<<< HEAD
 =======
 $(function() { 
 
@@ -94,6 +98,8 @@ $(function() {
 
 
 >>>>>>> parent of 7ed64cc... started new track
+=======
+>>>>>>> parent of c845db8... going to revert
 });
 
 

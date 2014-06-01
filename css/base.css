@@ -1,15 +1,81 @@
+header,body,footer
+{
+        background: url("../img/bg_tile.png");
+}
+h1 
+{
+        text-align: center;
+}
+
+.row
+{ 
+}
+
 #card_back
 {
         background: url("../img/card_back.png");
         width: 100px;
-        height: 150px;
+        height: 150px; 
+        position: relative;
         -webkit-transition: all .1s linear; 
 }
 
 #card_back:hover
 {
         background: url("../img/card_back_hover.png"); 
-	-webkit-transform: translate(0, -5px);
+	-webkit-transform: translate(0, -5px); 
+}
 
-	
+#card_chocolate
+{
+        background: url("../img/card_chocolate.png");
+        width: 100px;
+        height: 150px; 
+        position: relative;
+        -webkit-transition: all .1s linear; 
+}
+
+#card_leopard
+{
+        background: url("../img/card_leopard.png");
+        width: 100px;
+        height: 150px; 
+        position: relative;
+        -webkit-transition: all .1s linear; 
+}
+
+#card_coffee
+{
+        background: url("../img/card_coffee.png");
+        width: 100px;
+        height: 150px; 
+        position: relative;
+        -webkit-transition: all .1s linear; 
+}
+
+#card_lightning
+{
+        background: url("../img/card_lightning.png");
+        width: 100px;
+        height: 150px; 
+        position: relative;
+        -webkit-transition: all .1s linear; 
+}
+
+#card_warning
+{
+        background: url("../img/card_warning.png");
+        width: 100px;
+        height: 150px; 
+        position: relative;
+        -webkit-transition: all .1s linear; 
+}
+
+#card_space
+{
+        background: url("../img/card_space.png");
+        width: 100px;
+        height: 150px; 
+        position: relative;
+        -webkit-transition: all .1s linear; 
 }

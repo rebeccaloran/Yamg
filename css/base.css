@@ -1,0 +1,15 @@
+#card_back
+{
+        background: url("../img/card_back.png");
+        width: 100px;
+        height: 150px;
+        -webkit-transition: all .1s linear; 
+}
+
+#card_back:hover
+{
+        background: url("../img/card_back_hover.png"); 
+	-webkit-transform: translate(0, -5px);
+
+	
+}

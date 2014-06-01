@@ -1,11 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 $(function() {
-=======
-$(function() { 
->>>>>>> parent of 7ed64cc... started new track
 =======
 $(function() { 
 >>>>>>> parent of 7ed64cc... started new track
@@ -13,7 +9,6 @@ $(function() {
 
         // Create global objects
         var memory = {}
-<<<<<<< HEAD
 <<<<<<< HEAD
        memory.grid = document.getElementById('grid')
 
@@ -55,8 +50,6 @@ $(function() {
                 for(var j = 0; j < rowCount; j++) {
                         document.body.innerHTML += '<a href="#" id="card_back">[]</a>';
 =======
-=======
->>>>>>> parent of 7ed64cc... started new track
 
 
         // Create array of cards
@@ -89,22 +82,13 @@ $(function() {
                 for(var j = 0; j < memory.columnCount; j++) {
                         document.body.innerHTML += '<button  href="#row' 
                         + (i) + '_' + (j) +  '" id="card_back"></button>';
-<<<<<<< HEAD
->>>>>>> parent of 7ed64cc... started new track
-=======
 >>>>>>> parent of 7ed64cc... started new track
                 }
                
                 document.body.innerHTML += '</div>'; 
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
 >>>>>>> parent of 1141b68... got back of the cards, need to start working on flipping them. going to try loading images WITHIN js rather than css
-=======
-
-
-
->>>>>>> parent of 7ed64cc... started new track
 =======
 
 

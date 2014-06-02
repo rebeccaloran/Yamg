@@ -131,6 +131,23 @@ $(function() {
         memory.deck = [];
         console.log(memory.deck);
         
+        /*
+
+        memory.positon = [
+        {
+                suit: "card_coffee", value: "0", flipped: false, position: {x: 0, y: 0},
+                suit: "card_chocolate", value: "0", flipped: false, position: {x: 0, y: 0},
+                suit: "card_leopard", value: "0", flipped: false, position: {x: 0, y: 0},
+                suit: "card_lightning", value: "0", flipped: false, position: {x: 0, y: 0},
+                suit: "card_space", value: "0", flipped: false, position: {x: 0, y: 0},
+                suit: "card_warning", value: "0", flipped: false, position: {x: 0, y: 0} 
+        }
+        ];
+        */
+      
+      
+
+     
         
         // When clicking any of the elements, return className of clicked element
         
@@ -149,6 +166,13 @@ $(function() {
               
                 
         }); 
+
+        // I need a way of retaining the status and position of the cards. 
+        // Smething similar to:
+        /*
+                [{suit: "D", value: "9", flipped: false, position: {x: 1, y: 10}, ...] 
+        */
+        // Which creates an array of an object
              
 });
 

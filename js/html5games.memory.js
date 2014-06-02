@@ -119,7 +119,7 @@ $(function() {
         
                 for(var j = 0; j < memory.columnCount; j++) {
                         document.body.innerHTML += '<img  class="' 
-                        + 'card_back" " id="' (memory.slice) + '"></img>';
+                        + 'card_back" " id="' + (memory.slice) + '"></img>';
                        ++ memory.slice;
                 }
                

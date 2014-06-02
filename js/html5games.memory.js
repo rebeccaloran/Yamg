@@ -119,7 +119,7 @@ $(function() {
         
                 for(var j = 0; j < memory.columnCount; j++) {
                         document.body.innerHTML += '<img  class="' 
-                        + (memory.slice) +  '" id="card_back"></img>';
+                        + 'card_back" " id="' (memory.slice) + '"></img>';
                        ++ memory.slice;
                 }
                
@@ -161,8 +161,8 @@ $(function() {
                 console.log(memory.cards);
                 console.log(memory.deck);
        
-                $(this).replaceWith('<img class="' + (memory.slice)
-                        + '" id="' + (i) + '"></img>');
+                $(this).replaceWith('<img class="' + (i)
+                        + '" id="' + (memory.slice) + '"></img>');
               
                 
         }); 

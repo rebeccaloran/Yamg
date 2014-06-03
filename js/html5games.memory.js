@@ -137,7 +137,7 @@ $(function() {
                 }
 
         // now that this row is fully formed, add it to the DOM 
-                document.appendChild(rowDiv); 
+                document.body.appendChild(rowDiv); 
         } 
 });
 /*

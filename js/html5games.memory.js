@@ -130,7 +130,7 @@ $(function() {
 
                 // generate an <img class="card_name"> 
                         var card= document.createElement("img"); 
-                        card.className = row[j];
+                        card.className = currentRow[j];
 
                         // *add* this `card` as the next child of `rowDiv` 
                         rowDiv.appendChild(card); 

@@ -1,5 +1,22 @@
 $(function() { 
 
+        function shuffle(cards) {
+                var remaining = memory.cards.length, current, i;
+
+                // While there remains elements to shuffle
+                while (remaining) {
+
+                        // Pick a remaining element
+                        i = Math.floor(Math.random() * remaining--);
+
+                        // And swap it with the current element
+                        current = memory.cards[remaining];
+                        memory.cards[remaining] = memory.cards[i];
+                        memory.cards[i] = current; 
+                }
+
+                return cards;
+        }
 
         // Create global objects
         var memory = {}
@@ -13,7 +30,11 @@ $(function() {
                 "card_chocolate",
                 "card_chocolate",
                 "card_chocolate",
+                "card_chocolate",
+                "card_chocolate",
 
+                "card_coffee", 
+                "card_coffee", 
                 "card_coffee", 
                 "card_coffee", 
                 "card_coffee", 
@@ -23,39 +44,79 @@ $(function() {
                 "card_leopard",
                 "card_leopard",
                 "card_leopard",
+                "card_leopard",
+                "card_leopard",
 
                 "card_lightning",
                 "card_lightning",
                 "card_lightning",
                 "card_lightning",
-
-                "card_space",
-                "card_space",
-                "card_space",
-                "card_space",
-
-                "card_warning",
-                "card_warning",
-                "card_warning",
-                "card_warning",
-
-                // Plus 2 sets of 3 of the cards, 
-                "card_warning",
-                "card_warning",
-
-                "card_space",
-                "card_space",
-
                 "card_lightning",
-                "card_lightning"
+                "card_lightning",
+
+                "card_space",
+                "card_space",
+                "card_space",
+                "card_space",
+                "card_space",
+                "card_space",
+
+                "card_warning",
+                "card_warning",
+                "card_warning",
+                "card_warning",
+                "card_warning",
+                "card_warning",
+
         ];
+        memory.temp = [];
 
-        // create a 3x10 grid for the cards 
+        memory.row1 = [];
+        memory.row2 = [];
+        memory.row3 = [];
+        
+        shuffle(memory.cards);
+        for(i = 0; i < 36; i++) {
+
+                while (i < 12) {
+                memory.row1 += "c" + (i) + memory.cards.pop(); 
+                i++ 
+                }
+                while (i >= 12 && i < 24) {
+                memory.row2 += "c" + (i) + memory.cards.pop(); 
+                i++ 
+                }
+                while (i >= 24 && i < 36) {
+                memory.row3 += "c" + (i) + memory.cards.pop(); 
+                i++ 
+                }
+        }
+
+
+        
+
+        memory.grid = [
+                [memory.row1],
+
+                [memory.row2], 
+
+                [memory.row3] 
+        ]
+
+
+        console.log(memory.row1);
+        console.log(memory.row2);
+        console.log(memory.row3);
+        console.log(memory.grid);
+        
+});
+/*
+        // create a 3x12 grid for the cards 
         memory.rowCount = 3;
         memory.columnCount = 10;
         // count the index for class name
         memory.slice = 0;
-
+*/
 
         /*
         setInterval(function() {
@@ -77,23 +138,6 @@ $(function() {
         //              :: MUST pick 2 cards from 3 of the possible card choices
         //                      () 2 * 3 = 6;
         //
-        function shuffle(cards) {
-                var remaining = memory.cards.length, current, i;
-
-                // While there remains elements to shuffle
-                while (remaining) {
-
-                        // Pick a remaining element
-                        i = Math.floor(Math.random() * remaining--);
-
-                        // And swap it with the current element
-                        current = memory.cards[remaining];
-                        memory.cards[remaining] = memory.cards[i];
-                        memory.cards[i] = current; 
-                }
-
-                return cards;
-        }
 
         
 /*
@@ -110,6 +154,8 @@ $(function() {
         //to this:
         $(divs).appendTo(divs[0].parentNode).show();
 */
+
+/*
 
 
         // Create the grid of all face down cards 
@@ -144,7 +190,7 @@ $(function() {
         }
         ];
         */
-      
+  /*    
       
 
      
@@ -166,14 +212,14 @@ $(function() {
               
                 
         }); 
-
+*/
         // I need a way of retaining the status and position of the cards. 
         // Smething similar to:
         /*
                 [{suit: "D", value: "9", flipped: false, position: {x: 1, y: 10}, ...] 
         */
         // Which creates an array of an object
-             
-});
+
+//});
 
 

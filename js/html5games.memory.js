@@ -79,15 +79,15 @@ $(function() {
         for(i = 0; i < 36; i++) {
 
                 while (i < 12) {
-                memory.row1 += "c" + (i) + memory.cards.pop(); 
+                memory.row1.push(memory.cards.pop()); 
                 i++ 
                 }
                 while (i >= 12 && i < 24) {
-                memory.row2 += "c" + (i) + memory.cards.pop(); 
+                memory.row2.push( memory.cards.pop()); 
                 i++ 
                 }
                 while (i >= 24 && i < 36) {
-                memory.row3 += "c" + (i) + memory.cards.pop(); 
+                memory.row3.push(memory.cards.pop()); 
                 i++ 
                 }
         }
@@ -96,11 +96,11 @@ $(function() {
         
 
         memory.grid = [
-                [memory.row1],
+                memory.row1,
 
-                [memory.row2], 
+                memory.row2, 
 
-                [memory.row3] 
+                memory.row3 
         ]
 
 

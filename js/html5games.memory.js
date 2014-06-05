@@ -1,4 +1,4 @@
-$(function() { 
+$(function main() { 
 
         function shuffle(cards) {
                 var remaining = memory.cards.length, current, i;
@@ -115,6 +115,8 @@ $(function() {
         
 
         // Iterate through the rows 
+        var x = 0
+
         for (var i = 0; i < memory.grid.length; i++) {
 
                 // Store this row 
@@ -125,26 +127,56 @@ $(function() {
                 rowDiv.className = "row";
 
 
+                
                 // Iterate through each column (each card) 
                 for (var j = 0; j < memory.grid[i].length; j++) {
+                        
+                        
+                       
+                      
 
                 // generate an <img class="card_name"> 
                         var card = document.createElement("img"); 
-                        /*
+                        var back = document.createElement("img");
+                        
+                        
                         card.className = currentRow[j];
-                        */
-                        card.className = "card_back";
+                       
+
+                        back.className = "card_back"; 
+                        back.id = x;
+                        
+                       
+                        // store the value of the card but only use when clicked 
 
                         // *add* this `card` as the next child of `rowDiv` 
-                        rowDiv.appendChild(card); 
-                }
+                        rowDiv.appendChild(back); 
+                        x++;
+                        
+                } 
 
         // now that this row is fully formed, add it to the DOM 
                 document.body.appendChild(rowDiv); 
         } 
+        // When clicking on a card, change the className to the corresponding
+        // card in memory.cards according to the number of each card
+        $(document).click(function(event) {
+                var card_id = parseInt(event.target.id); 
+                event.target.className = memory.cards[card_id];
+        }); 
 
         // Somehow I need to store the grid and have their className = card_back until clicked
         //     [] when clicked
         //              :: "flip" the card, revealing its card_class
+        //
+        // Possible solution:
+        //      [] write the entire grid as "card_back"
+        //              :: when clicked, rewrite entire grid with all card_back 
+        //                 except the one clicked, which changes to currentRow[j] 
+        //
+        // The solution involved 
+
 });
+        
+
 

@@ -129,8 +129,11 @@ $(function() {
                 for (var j = 0; j < memory.grid[i].length; j++) {
 
                 // generate an <img class="card_name"> 
-                        var card= document.createElement("img"); 
+                        var card = document.createElement("img"); 
+                        /*
                         card.className = currentRow[j];
+                        */
+                        card.className = "card_back";
 
                         // *add* this `card` as the next child of `rowDiv` 
                         rowDiv.appendChild(card); 
@@ -139,5 +142,9 @@ $(function() {
         // now that this row is fully formed, add it to the DOM 
                 document.body.appendChild(rowDiv); 
         } 
+
+        // Somehow I need to store the grid and have their className = card_back until clicked
+        //     [] when clicked
+        //              :: "flip" the card, revealing its card_class
 });
 /

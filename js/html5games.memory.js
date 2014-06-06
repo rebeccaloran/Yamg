@@ -185,26 +185,26 @@ $(function() {
                  // remove the class "card_back"
                  $(event.target).removeClass("card_back");
 
-                // Keep track of the cards clicked
-                memory.currentCard.push(event.target); 
-                memory.cardsClicked.push(memory.cards[memory.card_id]); 
+                 // Keep track of the cards clicked
+                 memory.currentCard.push(event.target); 
+                 memory.cardsClicked.push(memory.cards[memory.card_id]); 
 
               
 
                 if (memory.cardsClicked.length == 2) { 
+                        
                         if (memory.cardsClicked[0] == memory.cardsClicked[1]) {
 
                                  alert("Match!");
-                                 $(memory.cardsClicked[0]).addClass("card_blank");
 
-                                 $(memory.cardsClicked[1]).addClass("card_blank");
                                  $(memory.currentCard[0]).removeClass(
                                          memory.cardsClicked[0]);
 
                                  $(memory.currentCard[1]).removeClass(
-                                         memory.cardsClicked[1]);
+                                         memory.cardsClicked[1]); 
 
-                                 
+                                 $(memory.currentCard[0]).addClass("card_blank"); 
+                                 $(memory.currentCard[1]).addClass("card_blank");
 
                                  memory.cardsClicked = [];
                                  memory.currentCard = [];
@@ -218,22 +218,22 @@ $(function() {
                                          memory.cardsClicked[0]);
 
                                  $(memory.currentCard[1]).removeClass(
-                                         memory.cardsClicked[1]);
-                                
-
-                
+                                         memory.cardsClicked[1]); 
 
                                  $(memory.currentCard[0]).addClass("card_back");
                                  $(memory.currentCard[1]).addClass("card_back");
 
                                  memory.cardsClicked = [];
                                  memory.currentCard = [];
-
+                        }
                 }
+         }
 
-                 
-         }
-         }
+         
+
+        
+       
+      
          
 
                 /*

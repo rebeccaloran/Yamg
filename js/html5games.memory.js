@@ -195,19 +195,23 @@ $(function() {
                         
                         if (memory.cardsClicked[0] == memory.cardsClicked[1]) {
 
-                                 alert("Match!");
+                                // alert("Match!");
+                                 setTimeout(function() {
 
                                  $(memory.currentCard[0]).removeClass(
                                          memory.cardsClicked[0]);
 
                                  $(memory.currentCard[1]).removeClass(
                                          memory.cardsClicked[1]); 
+                                 
 
                                  $(memory.currentCard[0]).addClass("card_blank"); 
                                  $(memory.currentCard[1]).addClass("card_blank");
+                                
 
                                  memory.cardsClicked = [];
                                  memory.currentCard = [];
+                                 }, 2000);
                         }
                          
 

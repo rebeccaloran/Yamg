@@ -158,12 +158,56 @@ $(function main() {
         // now that this row is fully formed, add it to the DOM 
                 document.body.appendChild(rowDiv); 
         } 
+
+
+
         // When clicking on a card, change the className to the corresponding
         // card in memory.cards according to the number of each card
+
+        // Stores className of card clicked
+        memory.cardsClicked = [];
+
+        // Stores element of card clicked
+        memory.currentCard = [];
+        
+        // Stores id number of card clicked to splice from memory.cards
+        memory.card_id;
         $(document).click(function(event) {
-                var card_id = parseInt(event.target.id); 
-                event.target.className = memory.cards[card_id];
-        }); 
+               
+                memory.card_id = parseInt(event.target.id); 
+                event.target.className = memory.cards[memory.card_id];
+
+                memory.currentCard.push(event.target); 
+                memory.cardsClicked.push(memory.cards[memory.card_id]); 
+
+                console.log(memory.cardsClicked); 
+                console.log(memory.currentCard); 
+        
+// TODO
+//      [] Cards change to "card_blank" without displaying original card
+//      [] Cards change to "card_back" without displaying original card
+//      [] When already blanked card is clicked it shows original card
+//              :: expected behavior is not doing anything
+              
+                if (memory.cardsClicked.length == 2) { 
+
+                        if (memory.cardsClicked[0] == memory.cardsClicked[1]) { 
+
+                                memory.currentCard[0].className = "card_blank"; 
+                                memory.currentCard[1].className = "card_blank"; 
+                                memory.cardsClicked = [];
+                                memory.currentCard = []; 
+                        }
+                        
+                        else if (memory.cardsClicked[0] != memory.cardsClicked[1]) { 
+
+                                memory.currentCard[0].className = "card_back"; 
+                                memory.currentCard[1].className = "card_back"; 
+                                memory.cardsClicked = [];
+                                memory.currentCard = []; 
+                        } 
+                } 
+        });
 
         // Somehow I need to store the grid and have their className = card_back until clicked
         //     [] when clicked

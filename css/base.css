@@ -11,6 +11,14 @@ h1
 { 
 }
 
+.card_blank 
+{
+        background: url(../img/card_back.png");
+        width: 100px;
+        height: 150px;
+        position: relative;
+}
+
 .card_back
 {
         background: url("../img/card_back.png");

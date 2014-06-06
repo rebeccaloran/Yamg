@@ -173,6 +173,7 @@ $(function() {
         
         // Stores id number of card clicked to splice from memory.cards
         memory.card_id;
+        $(document).on("click");  
         $(document).click(function(event) {
          // if the element clicked has the name "card_back"
          if (event.target.className == "card_back") {
@@ -190,48 +191,87 @@ $(function() {
                  memory.cardsClicked.push(memory.cards[memory.card_id]); 
 
               
-
+         
                 if (memory.cardsClicked.length == 2) { 
+                       
+                        $(document).off("click");
+                       
                         
                         if (memory.cardsClicked[0] == memory.cardsClicked[1]) {
 
                                 // alert("Match!");
+                                
                                  setTimeout(function() {
+                                 $(document).off("click"); 
 
-                                 $(memory.currentCard[0]).removeClass(
-                                         memory.cardsClicked[0]);
+                                         $(memory.currentCard[0]).removeClass(
+                                                 memory.cardsClicked[0]);
 
-                                 $(memory.currentCard[1]).removeClass(
-                                         memory.cardsClicked[1]); 
+                                         $(memory.currentCard[1]).removeClass(
+                                                 memory.cardsClicked[1]); 
+                                         
+
+                                         $(memory.currentCard[0]).addClass("card_blank"); 
+                                         $(memory.currentCard[1]).addClass("card_blank");
+
+                                         
+
+                                         memory.cardsClicked = [];
+                                         memory.currentCard = [];
+
+               
+         
+                                        
+                                         
+                                        
+                                 }, 2000);
+                                        
+                                        
+                                 
+                                
+                        }
+                       
                                  
 
-                                 $(memory.currentCard[0]).addClass("card_blank"); 
-                                 $(memory.currentCard[1]).addClass("card_blank");
-                                
-
-                                 memory.cardsClicked = [];
-                                 memory.currentCard = [];
-                                 }, 2000);
-                        }
                          
-
                         else if (memory.cardsClicked[0] != memory.cardsClicked[1]) {
-                                 alert("No match...");
-                        
-                                 $(memory.currentCard[0]).removeClass(
-                                         memory.cardsClicked[0]);
+                                 
+                       
+                                 $(document).off("click"); 
+                                 setTimeout(function() {
+                                 
+                       
 
-                                 $(memory.currentCard[1]).removeClass(
-                                         memory.cardsClicked[1]); 
+                                         $(memory.currentCard[0]).removeClass(
+                                                 memory.cardsClicked[0]);
 
-                                 $(memory.currentCard[0]).addClass("card_back");
-                                 $(memory.currentCard[1]).addClass("card_back");
+                                         $(memory.currentCard[1]).removeClass(
+                                                 memory.cardsClicked[1]); 
 
-                                 memory.cardsClicked = [];
-                                 memory.currentCard = [];
+                                         $(memory.currentCard[0]).addClass("card_back");
+                                         $(memory.currentCard[1]).addClass("card_back");
+
+                                         memory.cardsClicked = [];
+                                         memory.currentCard = [];
+                                        
+                               
+                               
+                                         
+                                         
+                                         
+                                 }, 2000);
+       
+        
                         }
+                                         
+
                 }
+        
+                                         
          }
+                                        
+                
+         
 
          
 

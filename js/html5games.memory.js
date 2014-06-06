@@ -1,4 +1,4 @@
-$(function main() { 
+$(function() { 
 
         function shuffle(cards) {
                 var remaining = memory.cards.length, current, i;
@@ -173,40 +173,47 @@ $(function main() {
         // Stores id number of card clicked to splice from memory.cards
         memory.card_id;
         $(document).click(function(event) {
-               
-                memory.card_id = parseInt(event.target.id); 
-                event.target.className = memory.cards[memory.card_id];
+                if (event.target.className != "card_blank" && 
+                        event.target.id != memory.card_id) {
+                       
+                        memory.card_id = parseInt(event.target.id); 
+                        event.target.className = memory.cards[memory.card_id];
 
-                memory.currentCard.push(event.target); 
-                memory.cardsClicked.push(memory.cards[memory.card_id]); 
+                        memory.currentCard.push(event.target); 
+                        memory.cardsClicked.push(memory.cards[memory.card_id]); 
 
-                console.log(memory.cardsClicked); 
-                console.log(memory.currentCard); 
-        
-// TODO
-//      [] Cards change to "card_blank" without displaying original card
-//      [] Cards change to "card_back" without displaying original card
-//      [] When already blanked card is clicked it shows original card
-//              :: expected behavior is not doing anything
-              
-                if (memory.cardsClicked.length == 2) { 
+                        console.log(memory.cardsClicked); 
+                        console.log(memory.currentCard); 
+                
+        // TODO
+        //      [] Cards change to "card_blank" without displaying original card
+        //      [] Cards change to "card_back" without displaying original card
+        //      [] When already blanked card is clicked it shows original card
+        //              :: expected behavior is not doing anything
+                      
+                                if (memory.cardsClicked.length == 2) { 
 
-                        if (memory.cardsClicked[0] == memory.cardsClicked[1]) { 
+                                        if (memory.cardsClicked[0] == memory.cardsClicked[1]) { 
+                                        alert("Match!");
 
-                                memory.currentCard[0].className = "card_blank"; 
-                                memory.currentCard[1].className = "card_blank"; 
-                                memory.cardsClicked = [];
-                                memory.currentCard = []; 
-                        }
-                        
-                        else if (memory.cardsClicked[0] != memory.cardsClicked[1]) { 
+                                        memory.currentCard[0].className = "card_blank"; 
+                                        memory.currentCard[1].className = "card_blank"; 
+                                        memory.cardsClicked = [];
+                                        memory.currentCard = []; 
+                                }
+                                
+                                else if (memory.cardsClicked[0] != memory.cardsClicked[1]) { 
 
-                                memory.currentCard[0].className = "card_back"; 
-                                memory.currentCard[1].className = "card_back"; 
-                                memory.cardsClicked = [];
-                                memory.currentCard = []; 
+
+                                        alert("No match...");
+                                        memory.currentCard[0].className = "card_back"; 
+                                        memory.currentCard[1].className = "card_back"; 
+                                        memory.cardsClicked = [];
+                                        memory.currentCard = []; 
+                                } 
                         } 
-                } 
+                }
+        
         });
 
         // Somehow I need to store the grid and have their className = card_back until clicked

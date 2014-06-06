@@ -77,6 +77,7 @@ $(function() {
         
         // shuffle the deck
         shuffle(memory.cards);
+
         // count until 35, giving us 36 values for i
         for(i = 0; i < 36; i++) {
 
@@ -173,6 +174,75 @@ $(function() {
         // Stores id number of card clicked to splice from memory.cards
         memory.card_id;
         $(document).click(function(event) {
+         // if the element clicked has the name "card_back"
+         if (event.target.className == "card_back") {
+                 console.log(event.target);
+                 memory.card_id = event.target.id;
+                 // Add the class of the card
+                 $(event.target).addClass(memory.cards[parseInt(memory.card_id)]);
+                 
+
+                 // remove the class "card_back"
+                 $(event.target).removeClass("card_back");
+
+                // Keep track of the cards clicked
+                memory.currentCard.push(event.target); 
+                memory.cardsClicked.push(memory.cards[memory.card_id]); 
+
+              
+
+                if (memory.cardsClicked.length == 2) { 
+                        if (memory.cardsClicked[0] == memory.cardsClicked[1]) {
+
+                                 alert("Match!");
+                                 $(memory.cardsClicked[0]).addClass("card_blank");
+
+                                 $(memory.cardsClicked[1]).addClass("card_blank");
+                                 $(memory.currentCard[0]).removeClass(
+                                         memory.cardsClicked[0]);
+
+                                 $(memory.currentCard[1]).removeClass(
+                                         memory.cardsClicked[1]);
+
+                                 
+
+                                 memory.cardsClicked = [];
+                                 memory.currentCard = [];
+                        }
+                         
+
+                        else if (memory.cardsClicked[0] != memory.cardsClicked[1]) {
+                                 alert("No match...");
+                        
+                                 $(memory.currentCard[0]).removeClass(
+                                         memory.cardsClicked[0]);
+
+                                 $(memory.currentCard[1]).removeClass(
+                                         memory.cardsClicked[1]);
+                                
+
+                
+
+                                 $(memory.currentCard[0]).addClass("card_back");
+                                 $(memory.currentCard[1]).addClass("card_back");
+
+                                 memory.cardsClicked = [];
+                                 memory.currentCard = [];
+
+                }
+
+                 
+         }
+         }
+         
+
+                /*
+
+                  
+                   
+                  
+                   
+
                 if (event.target.className != "card_blank" && 
                         event.target.id != memory.card_id) {
                        
@@ -213,7 +283,9 @@ $(function() {
                                 } 
                         } 
                 }
-        
+
+       */ 
+
         });
 
         // Somehow I need to store the grid and have their className = card_back until clicked

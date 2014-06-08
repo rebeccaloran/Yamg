@@ -1,18 +1,17 @@
 $(function() { 
 
         function shuffle(cards) {
-                var remaining = memory.cards.length, current, i;
+                var remaining = cards.length, current, i;
 
                 // While there remains elements to shuffle
-                while (remaining) {
-
+                while (remaining) { 
                         // Pick a remaining element
                         i = Math.floor(Math.random() * remaining--);
 
                         // And swap it with the current element
-                        current = memory.cards[remaining];
-                        memory.cards[remaining] = memory.cards[i];
-                        memory.cards[i] = current; 
+                        current = cards[remaining];
+                        cards[remaining] = cards[i];
+                        cards[i] = current; 
                 }
 
                 return cards;
@@ -21,54 +20,27 @@ $(function() {
         // Create global objects
         var memory = {}
 
+        memory.cards = []; 
 
         // Create array of cards
         // (I could hardcode the array to have 30 cards with the defined set...)
-        memory.cards = [
-                // 6 of each card
-                "card_chocolate",
-                "card_chocolate",
-                "card_chocolate",
-                "card_chocolate",
-                "card_chocolate",
-                "card_chocolate",
-
+        // Bt I will instead use a set of card `types` that will be used in a for
+        // loop to create an array of 36 cards
+        memory.cardTypes = [ 
+                "card_chocolate", 
                 "card_coffee", 
-                "card_coffee", 
-                "card_coffee", 
-                "card_coffee", 
-                "card_coffee", 
-                "card_coffee", 
-
-                "card_leopard",
-                "card_leopard",
-                "card_leopard",
-                "card_leopard",
-                "card_leopard",
-                "card_leopard",
-
-                "card_lightning",
-                "card_lightning",
-                "card_lightning",
-                "card_lightning",
-                "card_lightning",
-                "card_lightning",
-
-                "card_space",
-                "card_space",
-                "card_space",
-                "card_space",
-                "card_space",
-                "card_space",
-
-                "card_warning",
-                "card_warning",
-                "card_warning",
-                "card_warning",
-                "card_warning",
-                "card_warning",
-
+                "card_leopard", 
+                "card_lightning", 
+                "card_space", 
+                "card_warning", 
         ]; 
+
+        for (i = 0; i < 36; i++) {
+                for (j =0; j < memory.cardTypes.length; j++) {
+
+                        memory.cards.push(memory.cardTypes[j]);
+                }
+        }
 
         // Initialize 3 rows; each row will hold 12 cards
         memory.row1 = [];
@@ -79,8 +51,7 @@ $(function() {
         shuffle(memory.cards);
 
         // count until 35, giving us 36 values for i
-        for(i = 0; i < 36; i++) {
-
+        for(i = 0; i < 36; i++) { 
                 // add 12 cards from index i (0-11) into row1 
                 while (i < 12) {
                 memory.row1.push(memory.cards[i]); 
@@ -100,13 +71,10 @@ $(function() {
 
         // Create a "grid" which is an array of the 3 arrays we just made
         memory.grid = [
-                memory.row1,
-
+                memory.row1, 
                 memory.row2, 
-
                 memory.row3 
-        ]
-
+        ] 
 
         // Display the contents of the arrays to the console
         console.log(memory.row1);
@@ -118,31 +86,22 @@ $(function() {
         // Iterate through the rows 
         var x = 0
 
-        for (var i = 0; i < memory.grid.length; i++) {
-
+        for (var i = 0; i < memory.grid.length; i++) { 
                 // Store this row 
                 var currentRow = memory.grid[i];
 
                 // create a new div (with a “row” class) 
                 var rowDiv = document.createElement("div"); 
-                rowDiv.className = "row";
-
-
+                rowDiv.className = "row"; 
                 
                 // Iterate through each column (each card) 
-                for (var j = 0; j < memory.grid[i].length; j++) {
-                        
-                        
-                       
-                      
+                for (var j = 0; j < memory.grid[i].length; j++) { 
 
                 // generate an <img class="card_name"> 
                         var card = document.createElement("img"); 
-                        var back = document.createElement("img");
+                        var back = document.createElement("img"); 
                         
-                        
-                        card.className = currentRow[j];
-                       
+                        card.className = currentRow[j]; 
 
                         back.className = "card_back"; 
                         back.id = x;
@@ -160,8 +119,6 @@ $(function() {
                 document.body.appendChild(rowDiv); 
         } 
 
-
-
         // When clicking on a card, change the className to the corresponding
         // card in memory.cards according to the number of each card
 
@@ -173,15 +130,14 @@ $(function() {
         
         // Stores id number of card clicked to splice from memory.cards
         memory.card_id;
-        $(document).on("click");  
+       
         $(document).click(function(event) {
          // if the element clicked has the name "card_back"
          if (event.target.className == "card_back") {
                  console.log(event.target);
                  memory.card_id = event.target.id;
                  // Add the class of the card
-                 $(event.target).addClass(memory.cards[parseInt(memory.card_id)]);
-                 
+                 $(event.target).addClass(memory.cards[parseInt(memory.card_id)]); 
 
                  // remove the class "card_back"
                  $(event.target).removeClass("card_back");
@@ -189,58 +145,32 @@ $(function() {
                  // Keep track of the cards clicked
                  memory.currentCard.push(event.target); 
                  memory.cardsClicked.push(memory.cards[memory.card_id]); 
-
-              
          
                 if (memory.cardsClicked.length == 2) { 
-                       
-                        $(document).off("click");
-                       
+
+                        $(".card_back").css("pointer-events", "none");
                         
-                        if (memory.cardsClicked[0] == memory.cardsClicked[1]) {
-
-                                // alert("Match!");
-                                
-                                 setTimeout(function() {
-                                 $(document).off("click"); 
-
+                        if (memory.cardsClicked[0] == memory.cardsClicked[1]) { 
+                                 setTimeout(function() { 
                                          $(memory.currentCard[0]).removeClass(
                                                  memory.cardsClicked[0]);
 
                                          $(memory.currentCard[1]).removeClass(
                                                  memory.cardsClicked[1]); 
-                                         
 
                                          $(memory.currentCard[0]).addClass("card_blank"); 
-                                         $(memory.currentCard[1]).addClass("card_blank");
-
-                                         
+                                         $(memory.currentCard[1]).addClass("card_blank"); 
 
                                          memory.cardsClicked = [];
-                                         memory.currentCard = [];
+                                         memory.currentCard = []; 
 
-               
-         
-                                        
-                                         
-                                        
-                                 }, 2000);
-                                        
-                                        
-                                 
-                                
-                        }
-                       
-                                 
+                                         $(".card_back").css("pointer-events", "");
 
+                                 }, 2000); 
+                        } 
                          
-                        else if (memory.cardsClicked[0] != memory.cardsClicked[1]) {
-                                 
-                       
-                                 $(document).off("click"); 
-                                 setTimeout(function() {
-                                 
-                       
+                        else if (memory.cardsClicked[0] != memory.cardsClicked[1]) { 
+                                 setTimeout(function() { 
 
                                          $(memory.currentCard[0]).removeClass(
                                                  memory.cardsClicked[0]);
@@ -252,98 +182,15 @@ $(function() {
                                          $(memory.currentCard[1]).addClass("card_back");
 
                                          memory.cardsClicked = [];
-                                         memory.currentCard = [];
-                                        
-                               
-                               
+                                         memory.currentCard = []; 
+                                 
+                                         $(".card_back").css("pointer-events", "");
+                                 }, 2000); 
                                          
-                                         
-                                         
-                                 }, 2000);
-       
-        
                         }
-                                         
-
                 }
-        
-                                         
-         }
-                                        
-                
-         
-
-         
-
-        
-       
-      
-         
-
-                /*
-
-                  
-                   
-                  
-                   
-
-                if (event.target.className != "card_blank" && 
-                        event.target.id != memory.card_id) {
-                       
-                        memory.card_id = parseInt(event.target.id); 
-                        event.target.className = memory.cards[memory.card_id];
-
-                        memory.currentCard.push(event.target); 
-                        memory.cardsClicked.push(memory.cards[memory.card_id]); 
-
-                        console.log(memory.cardsClicked); 
-                        console.log(memory.currentCard); 
-                
-        // TODO
-        //      [] Cards change to "card_blank" without displaying original card
-        //      [] Cards change to "card_back" without displaying original card
-        //      [] When already blanked card is clicked it shows original card
-        //              :: expected behavior is not doing anything
-                      
-                                if (memory.cardsClicked.length == 2) { 
-
-                                        if (memory.cardsClicked[0] == memory.cardsClicked[1]) { 
-                                        alert("Match!");
-
-                                        memory.currentCard[0].className = "card_blank"; 
-                                        memory.currentCard[1].className = "card_blank"; 
-                                        memory.cardsClicked = [];
-                                        memory.currentCard = []; 
-                                }
-                                
-                                else if (memory.cardsClicked[0] != memory.cardsClicked[1]) { 
-
-
-                                        alert("No match...");
-                                        memory.currentCard[0].className = "card_back"; 
-                                        memory.currentCard[1].className = "card_back"; 
-                                        memory.cardsClicked = [];
-                                        memory.currentCard = []; 
-                                } 
-                        } 
-                }
-
-       */ 
-
+         } 
         });
-
-        // Somehow I need to store the grid and have their className = card_back until clicked
-        //     [] when clicked
-        //              :: "flip" the card, revealing its card_class
-        //
-        // Possible solution:
-        //      [] write the entire grid as "card_back"
-        //              :: when clicked, rewrite entire grid with all card_back 
-        //                 except the one clicked, which changes to currentRow[j] 
-        //
-        // The solution involved 
-
 });
         
-
 

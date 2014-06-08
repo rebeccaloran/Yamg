@@ -11,7 +11,15 @@ h1
 { 
 }
 
-#card_back
+.card_blank 
+{
+        background: url(../img/card_back.png");
+        width: 100px;
+        height: 150px;
+        position: relative;
+}
+
+.card_back
 {
         background: url("http://placekitten.com/100/150");
         width: 100px;
@@ -20,13 +28,13 @@ h1
         -webkit-transition: all .1s linear; 
 }
 
-#card_back:hover
+.card_back:hover
 {
         background: url("http://placekitten.com/100/150"); 
 	-webkit-transform: translate(0, -5px); 
 }
 
-#card_chocolate
+.card_chocolate
 {
         background: url("../img/card_chocolate.png");
         width: 100px;
@@ -35,7 +43,7 @@ h1
         -webkit-transition: all .1s linear; 
 }
 
-#card_leopard
+.card_leopard
 {
         background: url("../img/card_leopard.png");
         width: 100px;
@@ -44,7 +52,7 @@ h1
         -webkit-transition: all .1s linear; 
 }
 
-#card_coffee
+.card_coffee
 {
         background: url("../img/card_coffee.png");
         width: 100px;
@@ -53,7 +61,7 @@ h1
         -webkit-transition: all .1s linear; 
 }
 
-#card_lightning
+.card_lightning
 {
         background: url("../img/card_lightning.png");
         width: 100px;
@@ -62,7 +70,7 @@ h1
         -webkit-transition: all .1s linear; 
 }
 
-#card_warning
+.card_warning
 {
         background: url("../img/card_warning.png");
         width: 100px;
@@ -71,7 +79,7 @@ h1
         -webkit-transition: all .1s linear; 
 }
 
-#card_space
+.card_space
 {
         background: url("../img/card_space.png");
         width: 100px;
